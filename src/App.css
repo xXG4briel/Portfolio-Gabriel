@@ -1,0 +1,101 @@
+:root {
+    --primary-main: #2086ff;
+    --primary-shade: #0b6de0;
+    --primary-contrast: #0046ce;
+    
+    --bg-1: #000;    
+    --bg-2: #202020;
+    --bg-3: #424242;
+    --bg-4: #686868;
+    --bg-5: #949494;
+    --bg-6: #CDCDCD;
+    --bg-7: #E9E9E9;
+    --bg-8: #FFF;
+
+    --font-1-xxl: 3.5rem; /*font-size: 3rem;*/
+    --font-1-xl: 3rem; /*font-size: 2.5rem;*/
+    --font-1-l: 2rem; /*font-size: 1.5rem;*/
+    --font-1-m: 1.5rem; /*font-size: 1.25rem;*/
+    --font-1-s: 1.25rem; /*font-size: 1rem;*/
+    /* --font-2-l: 1.5rem;
+    --font-2-l-b: 1.25rem;
+    --font-1-m-b: 20px;
+    --font-2-m: 20px;
+    --font-2-s: 20px;
+    --font-2-xs: 20px;
+    --font-1-xs: 20px;*/
+}
+h1{
+    font-size: var(--font-1-xxl);
+}
+h2{
+    font-size: var(--font-1-xl);
+}
+h3{
+    font-size: var(--font-1-l);
+}
+h4{
+    font-size: var(--font-1-m);
+}
+h5{
+    font-size: var(--font-1-s);
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+p
+{
+    line-height: 1;
+    color: var(--bg-1);
+}
+main {
+    background: white;
+}
+body {
+    overflow-x: hidden;
+}
+.container {
+    height: 100vh;
+    padding-top: 70px;
+}
+
+.init {
+    /* animation-delay: .3s; */
+    animation: .6s ease-in init;
+}
+
+@keyframes init {
+    0% {
+        transform: translateY(200px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    h1{
+        font-size: 2.5rem;
+    }
+    h2{
+        font-size: 2rem;
+    }
+    h3{
+        font-size: 1.25rem;
+    }
+    h4{
+        font-size: 1rem;
+    }
+    h5{
+        font-size: 0.75rem;
+    } 
+}
