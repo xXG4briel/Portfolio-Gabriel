@@ -1,4 +1,4 @@
-import { MutableRefObject, ReactNode, useEffect, useRef, useState } from 'react';
+import { MutableRefObject, useEffect, useRef, useState } from 'react';
 import { Container } from './styles';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -6,16 +6,14 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import 'swiper/css';
 import { Button } from '../Button';
+import axios from 'axios';
 
 // interface ProjectProps {
 //   children: ReactNode;
 // }
 
-const project = [
-  { title: "Lorem", description: "Lorem ipsum", url: "http://google.com/", img: "https://primeveiculosbh.com.br/wp-content/uploads/2022/05/Corvette-6.2-Targa-V8-Gasolina-2011-Branco-Chevrolet-Lateral-Traseira-Lado-Direito-e-Teto-Aberto-Prime-Ve%C3%ADculos-BH-Belo-Horizonte-Minas-Gerais-Brasil.jpg" },
-  { title: "Lorem", description: "Lorem ipsum", url: "http://google.com/", img: "https://primeveiculosbh.com.br/wp-content/uploads/2022/05/Corvette-6.2-Targa-V8-Gasolina-2011-Branco-Chevrolet-Lateral-Traseira-Lado-Direito-e-Teto-Aberto-Prime-Ve%C3%ADculos-BH-Belo-Horizonte-Minas-Gerais-Brasil.jpg" },
-  { title: "Lorem", description: "Lorem ipsum", url: "http://google.com/", img: "https://primeveiculosbh.com.br/wp-content/uploads/2022/05/Corvette-6.2-Targa-V8-Gasolina-2011-Branco-Chevrolet-Lateral-Traseira-Lado-Direito-e-Teto-Aberto-Prime-Ve%C3%ADculos-BH-Belo-Horizonte-Minas-Gerais-Brasil.jpg" }
-]
+var project: any[] = [
+];
 
 // { children }: ProjectProps
 export function Project() {
@@ -27,6 +25,13 @@ export function Project() {
     return window.open(url, "_blank");
   }
   useEffect(() => {
+    axios.get('https://portfolioapi-z6bn.onrender.com/projects')
+    .then((result: any) => {
+      project = result.data;
+      console.log(project)
+    })
+    .catch((error) => console.error(error) );
+
     if (document.body.offsetWidth >= 1700) {
       setSlides(1.4);
     }
@@ -48,17 +53,18 @@ export function Project() {
             >
             {/* onSlideChange={() => console.log('slide change')}
             onSwiper={(swiper) => console.log(swiper)} */}
-            { project.length > 0 ? 
-            project.map( ({title, description, url, img}, i) =>
+            <h2>{ project.length }</h2>
+            { project.length > 0
+            ? project.map( ({Title, Description, URL, Image}, i) =>
               <SwiperSlide key={i} >
                 <div className="project-card">
                   <aside className="project-img-container">
-                    <div style={{ background: `linear-gradient(rgba(255, 255, 255, 0.1),rgba(0, 0, 0, .5)), url(${img})` }} ></div>
+                    <div style={{ background: `linear-gradient(rgba(255, 255, 255, 0.1),rgba(0, 0, 0, .5)), url(${Image})` }} ></div>
                   </aside>
                   <aside className="project-info-container">
-                      <h4>{title}</h4>
-                      <p>{description}</p>
-                      <Button name="Ver" function={ () => window.open(url, '_blank')}/>
+                      <h4>{Title}</h4>
+                      <p>{Description}</p>
+                      <Button name="Ver" function={ () => window.open(URL, '_blank')}/>
                   </aside>
                 </div>
               </SwiperSlide>

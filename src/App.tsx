@@ -5,10 +5,13 @@ import { Contact } from './components/index'
 import { Header } from './components/Header'
 import { Home } from './components/Home'
 import { Project } from './components/Project'
+import axios from "axios";
 
 function App() {
+  
   const route = "";
   const sectionsName = ["home", "about", "project","contact"];
+  var projects: any[] = [];
   const home = useRef();
   const about = useRef();
   const project = useRef();
@@ -18,25 +21,9 @@ function App() {
     (document.querySelector("section." + section) as HTMLElement) // ?.offsetHeight ?? 0
   );
   // console.log(tops)
-
+    
+  
   useEffect(() => {
-    // console.log(about)
-    // const handleScroll = (event: any) => {
-      // sections.filter( (section) => {
-      //   console.log(window.scrollY, section?.offsetHeight ?? 0);
-      // });
-      // console.log('window.scrollY', window.scrollY);
-      // (document.querySelector("section." + "about" ) as HTMLElement)?.offsetHeight ?? 0);
-    // };
-
-    // const sectionScrolled = sections.forEach( sectionName => {
-    // });
-
-    // window.addEventListener('scroll', handleScroll);
-
-    // return () => {
-    //   window.removeEventListener('scroll', handleScroll);
-    // };
   }, [])
 
   return (

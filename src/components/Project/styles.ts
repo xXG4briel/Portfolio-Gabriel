@@ -12,6 +12,9 @@ export const Container = styled.section`
         .swiper {
             width: 100%;
         }
+        h1 {
+            text-align: center;
+        }
         article {
             width: 100%;
         }
